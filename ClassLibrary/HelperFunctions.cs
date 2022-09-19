@@ -1,7 +1,12 @@
 ﻿using ClassLibrary.Models;
 using LINQtoCSV;
+//using SoftCircuits.CsvParser;
+//using Csv;
+//using CsvHelper;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -29,6 +34,7 @@ namespace ClassLibrary
 
         public static void WriteCsvFileModelDefault(List<CSVModelDefault> listModelDefaultObjects, string fileName)
         {
+            //using LinqToCSV
             var csvFileDescription = new CsvFileDescription
             {
                 FirstLineHasColumnNames = true,
@@ -39,47 +45,63 @@ namespace ClassLibrary
             csvContext.Write(listModelDefaultObjects, $"{fileName}.csv", csvFileDescription);
 
             Console.WriteLine($"CSV File {fileName} Created.");
+
+
+            //using CsvHelper
+            //using (var writer = new StreamWriter($"{fileName}.csv"))
+            //using (var csv = new CsvWriter($"{fileName}.csv"))
+            //{
+            //    foreach (var item in listModelDefaultObjects)
+            //    {
+            //        csv.WriteRow(item);
+
+            //    }
+            //}
+
+            //using SoftCircuits.CsvParser;
+            //CsvWriter<CSVModelDefault> writerS = new CsvWriter<CSVModelDefault>($"{fileName}.csv");
+
+            //using (CsvWriter<CSVModelDefault> writer = writerS)
+            //{
+            //    writer.WriteHeaders();
+
+            //    foreach (CSVModelDefault person in listModelDefaultObjects)
+            //        writer.Write(person);
+            //}
+
+
+
+            //get all cultures
+            //CultureInfo[] specificCultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+            //foreach (CultureInfo ci in specificCultures)
+
+            //    Console.WriteLine(ci.DisplayName);
+            //Console.WriteLine("Total: " + specificCultures.Length);
+
+
+
+            //using CsvHelper
+            //using (var writer = new StreamWriter($"{fileName}.csv"))
+            //using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            //{
+            //    csv.WriteRecords(listModelDefaultObjects);
+            //}
+
+
         }
-        public static void WriteCsvFile(List<Product> products, string fileName)
-        {
-            var csvFileDescription = new CsvFileDescription
-            {
-                FirstLineHasColumnNames = true,
-                SeparatorChar = ','
-            };
+        //public static void WriteCsvFile(List<Product> products, string fileName)
+        //{
+        //    var csvFileDescription = new CsvFileDescription
+        //    {
+        //        FirstLineHasColumnNames = true,
+        //        SeparatorChar = ','
+        //    };
 
-            var csvContext = new CsvContext();
-            csvContext.Write(products, $"{fileName}.csv", csvFileDescription);
+        //    var csvContext = new CsvContext();
+        //    csvContext.Write(products, $"{fileName}.csv", csvFileDescription);
 
-            Console.WriteLine($"CSV File {fileName} Created.");
-        }
-
-        public static List<CSVModelDefault> CreateListOfCSVModelDefault(List<Product> products)
-        {
-            List<CSVModelDefault> listCSVModelDefaults = new List<CSVModelDefault>();
-            foreach (Product product in products)
-            {
-                if (!string.IsNullOrEmpty(product.Name))
-                {
-                    StringBuilder sb = new StringBuilder();
-                    foreach (var techSpecs in product.TechSpecs)
-                    {
-                        sb.Append($"{techSpecs.Key}: {techSpecs.Value}; ");
-                    }
-
-                    CSVModelDefault modelDefault = new CSVModelDefault()
-                    {
-                        Title = product.Name,
-                        Vendor = "Makita",
-                        Image_Src = product.ImageLink,
-                        Variant_SKU = product.ProductNumber,
-                        Body = sb.ToString(),
-                        Type = product.Type
-                    };
-                    listCSVModelDefaults.Add(modelDefault);
-                }
-            }
-            return listCSVModelDefaults;
-        }
+        //    Console.WriteLine($"CSV File {fileName} Created.");
+        //}
+        
     }
 }

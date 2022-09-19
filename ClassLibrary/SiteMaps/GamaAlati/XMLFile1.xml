@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<urlset>
+	<url>
+		<loc>https://www.gama-alati.rs/bosch-wallscanner-d-tect-150-detektor-0601010005.html</loc>
+		<lastmod>2022-08-14T10:12:37+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<priority>0.8</priority>
+		<image_image>
+			<image_loc>https://www.gama-alati.rs/pub/media/catalog/product/cache/dc3edabe618157f9d8226c87ce522c1f/b/o/bosch-wallscanner-d-tect-150-detektor-struje-kablova-metala-0601010005.jpg</image_loc>
+			<image_title>Bosch Wallscanner D-tect 150 Professional detektor (0601010005)</image_title>
+			<image_caption>Bosch Wallscanner D-tect 150 Professional detektor (0601010005)</image_caption>
+		</image_image>
+		<PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+			<DataObject type="thumbnail">
+				<Attribute name="name" value="Bosch Wallscanner D-tect 150 Professional detektor (0601010005)"/>
+				<Attribute name="src" value="https://www.gama-alati.rs/pub/media/catalog/product/cache/dc3edabe618157f9d8226c87ce522c1f/b/o/bosch-wallscanner-d-tect-150-detektor-struje-kablova-metala-0601010005.jpg"/>
+			</DataObject>
+		</PageMap>
+	</url>
+
+	<url>
+		<loc>https://www.gama-alati.rs/bosch-wallscanner-d-tect-150-sv-detektor-0601010008.html</loc>
+		<lastmod>2022-08-14T10:13:00+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<priority>0.8</priority>
+		<image_image>
+			<image_loc>https://www.gama-alati.rs/pub/media/catalog/product/cache/dc3edabe618157f9d8226c87ce522c1f/b/o/bosch-wallscanner-d-tect-150-sv-detektor-struje-kablova-metala-0601010008.jpg</image_loc>
+			<image_title>Bosch Wallscanner D-tect 150 SV Professional detektor (0601010008)</image_title>
+			<image_caption>Bosch Wallscanner D-tect 150 SV Professional detektor (0601010008)</image_caption>
+		</image_image>
+		<PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+			<DataObject type="thumbnail">
+				<Attribute name="name" value="Bosch Wallscanner D-tect 150 SV Professional detektor (0601010008)"/>
+				<Attribute name="src" value="https://www.gama-alati.rs/pub/media/catalog/product/cache/dc3edabe618157f9d8226c87ce522c1f/b/o/bosch-wallscanner-d-tect-150-sv-detektor-struje-kablova-metala-0601010008.jpg"/>
+			</DataObject>
+		</PageMap>
+	</url>
+</urlset>
