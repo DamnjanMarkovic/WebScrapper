@@ -85,7 +85,7 @@ namespace ClassLibrary.MainSingletones
                 productID++;
 
                 //limit products to 50
-                if (productID < 50)
+                if (productID < 100)
                 {
                     products.Add(new ProductGamaAlati()
                     {
@@ -123,6 +123,29 @@ namespace ClassLibrary.MainSingletones
 
                         foreach (var productElement in containerElement.Descendants())
                         {
+                            //Fetch Product Vendor
+                            if (productElement.Attributes["class"] != null && productElement.Attributes["class"].Value != null && productElement.Attributes["class"].Value == "product attribute deklaracija")
+                            {
+                                foreach (var item in productElement.Descendants())
+                                {
+                                    if (item.Name.ToString().Equals("li"))
+                                    {
+                                        if (item.InnerText != null && !string.IsNullOrEmpty(item.InnerText) &&
+                                                                                        item.InnerText.Contains("Proizvođač"))
+                                        {
+                                            var result = item.InnerText.ToString();
+                                            if (result.ToUpper().Contains("MAKITA") || result.ToUpper().Contains("BOSCH"))
+                                            {
+                                                product.Vendor = result.Substring(result.LastIndexOf(':') + 2);
+                                            }
+                                            else
+                                            {
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             //Fetch Product Body
                             if (productElement.Attributes["class"] != null && productElement.Attributes["class"].Value != null && productElement.Attributes["class"].Value == "product attribute description")
                             {
@@ -135,22 +158,7 @@ namespace ClassLibrary.MainSingletones
                                 product.VariantSKU = productElement.Attributes["data-product-sku"].Value;
                             }
 
-                            //Fetch Product Vendor
-                            if (productElement.Attributes["class"] != null && productElement.Attributes["class"].Value != null && productElement.Attributes["class"].Value == "product attribute deklaracija")
-                            {
-                                foreach (var item in productElement.Descendants())
-                                {
-                                    if (item.Name.ToString().Equals("li"))
-                                    {
-                                        if (item.InnerText != null && !string.IsNullOrEmpty(item.InnerText) &&
-                                                                                        item.InnerText.Contains("Proizvođač"))
-                                        {
-                                            var result = item.InnerText.ToString();
-                                            product.Vendor = result.Substring(result.LastIndexOf(':') + 2);
-                                        }
-                                    }
-                                }
-                            }
+
                             //Fetch VariantSKU
                             if (productElement.Attributes["class"] != null && productElement.Attributes["class"].Value != null && productElement.Attributes["class"].Value == "product-add-form")
                             {
@@ -236,8 +244,11 @@ namespace ClassLibrary.MainSingletones
             foreach (ProductGamaAlati product in products)
             {
                 if (!string.IsNullOrEmpty(product.Title) &&
-                    !string.IsNullOrEmpty(product.Vendor) &&
-                    product.Vendor.ToUpper().Equals("MAKITA"))
+                    !string.IsNullOrEmpty(product.Vendor)
+                    && !string.IsNullOrEmpty(product.VariantPrice)
+                    && product.Vendor.ToUpper().Equals("MAKITA") || product.Vendor.ToUpper().Contains("BOSCH")
+                    
+                    )
                 {
                     CSVModelDefault modelDefault = new CSVModelDefault()
                     {
