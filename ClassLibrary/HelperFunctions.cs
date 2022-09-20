@@ -29,6 +29,9 @@ namespace ClassLibrary
         public static async Task<string> GetHtml(string url)
         {
             var httpClient = new HttpClient();
+            //create fake headers
+            httpClient.DefaultRequestHeaders.Add("User-Agent",
+                            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0");
             return await httpClient.GetStringAsync(url);
         }
 
@@ -45,49 +48,6 @@ namespace ClassLibrary
             csvContext.Write(listModelDefaultObjects, $"{fileName}.csv", csvFileDescription);
 
             Console.WriteLine($"CSV File {fileName} Created.");
-
-
-            //using CsvHelper
-            //using (var writer = new StreamWriter($"{fileName}.csv"))
-            //using (var csv = new CsvWriter($"{fileName}.csv"))
-            //{
-            //    foreach (var item in listModelDefaultObjects)
-            //    {
-            //        csv.WriteRow(item);
-
-            //    }
-            //}
-
-            //using SoftCircuits.CsvParser;
-            //CsvWriter<CSVModelDefault> writerS = new CsvWriter<CSVModelDefault>($"{fileName}.csv");
-
-            //using (CsvWriter<CSVModelDefault> writer = writerS)
-            //{
-            //    writer.WriteHeaders();
-
-            //    foreach (CSVModelDefault person in listModelDefaultObjects)
-            //        writer.Write(person);
-            //}
-
-
-
-            //get all cultures
-            //CultureInfo[] specificCultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
-            //foreach (CultureInfo ci in specificCultures)
-
-            //    Console.WriteLine(ci.DisplayName);
-            //Console.WriteLine("Total: " + specificCultures.Length);
-
-
-
-            //using CsvHelper
-            //using (var writer = new StreamWriter($"{fileName}.csv"))
-            //using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-            //{
-            //    csv.WriteRecords(listModelDefaultObjects);
-            //}
-
-
         }
         //public static void WriteCsvFile(List<Product> products, string fileName)
         //{

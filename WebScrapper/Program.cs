@@ -20,7 +20,6 @@ namespace WebScrapper
             //MakitaSingletone.Instance.Makita();
 
             //Create GamaAlati XML
-
             GamaAlatiSingletone.Instance.GamaAlati();
 
             Console.ReadLine();
